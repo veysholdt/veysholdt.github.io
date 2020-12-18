@@ -17,7 +17,7 @@ miro.onReady(() => {
           title: 'New Die',
           svgIcon: '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
           onClick: async () => {
-            await miro.board.widgets.create({type: 'shape', text: 'Test' });
+            let sticker = (await miro.board.widgets.create({type:'sticker', text: 'Hello'}))[0]
           }
         }
       }
