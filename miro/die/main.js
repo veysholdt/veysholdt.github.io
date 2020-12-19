@@ -54,6 +54,8 @@ miro.onReady(() => {
             {
               for (let i = 0; i < positions.length; i++) 
               {
+                let color = get_random_color();
+
                 let dice = (await miro.board.widgets.create({ 
                     type:'sticker', 
                     text: get_randome().toString(),
@@ -63,25 +65,24 @@ miro.onReady(() => {
                     "editable": false
                     },
                     style:{
+                      stickerBackgroundColor: color,
                       backgroundOpacity: 1,
                     },
                   }))[0];
                   
                   widgets.push(dice);
               }
-              
-              console.log(widgets[0].id);
 
               for (let i = 0; i < 15; i++) 
               {
-                var color = get_random_color();
+                let color = get_random_color();
                 
                 for (let j = 0; j < positions.length; j++) 
                 {
                   update_widget(widgets[j], positions[j], color);
                 }
 
-                sleep(30);
+                sleep(50);
               }
   
               for (let i = 0; i < positions.length; i++) 
