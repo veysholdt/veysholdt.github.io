@@ -17,7 +17,19 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-
+async function update_widget(wid, position, color)
+{
+  await miro.board.widgets.update({ 
+      id: wid, 
+      text: get_randome().toString(), 
+      x: position.x,
+      y: position.y,
+      style:{
+        stickerBackgroundColor: color,
+        backgroundOpacity: 1,
+      }
+    }); // update sticker
+}
 
 miro.onReady(() => {
   const icon =
@@ -35,57 +47,48 @@ miro.onReady(() => {
           svgIcon: icon, //'<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
           onClick: async () => {
 
-            let locations = await miro.board.selection.get();
+            let positions = await miro.board.selection.get();
+            let widgets = [];
 
-            if (locations.length >= 1)
+            if (positions.length >= 1)
             {
-              let dice = (await miro.board.widgets.create(
-                locations.map((loc) => ({ 
-                  type:'sticker', 
-                  text: get_randome().toString(),
-                  x: loc.x,
-                  y: loc.y,
-                  capabilities: {
-                  "editable": false
-                  },
-                  style:{
-                    backgroundOpacity: 1,
-                  },
-              }))));
-  
+              for (let i = 0; i < positions.length; i++) 
+              {
+                let dice = (await miro.board.widgets.create({ 
+                    type:'sticker', 
+                    text: get_randome().toString(),
+                    x: positions[i].x,
+                    y: positions[i].y,
+                    capabilities: {
+                    "editable": false
+                    },
+                    style:{
+                      backgroundOpacity: 1,
+                    },
+                  }));
+
+                  widgets.push(dice);
+              }    
+
               for (let i = 0; i < 15; i++) 
               {
                 var color = get_random_color();
-  
-                await miro.board.widgets.update(
-                  locations.map((loc) => ({ 
-                    id: dice.id, 
-                    text: get_randome().toString(), 
-                    x: loc.x,
-                    y: loc.y,
-                    style:{
-                      stickerBackgroundColor: color,
-                      backgroundOpacity: 1,
-                    }
-                  }))); // update sticker
-  
-                  sleep(50);
+                
+                for (let j = 0; j < positions.length; j++) 
+                {
+                  update_widget(widgets[i].id, positions[i], color);
+                }
+
+                sleep(50);
               }
   
-              await miro.board.widgets.update(
-                locations.map((loc) => ({ 
-                  id: dice.id, 
-                  text: get_randome().toString(), 
-                  x: loc.x,
-                  y: loc.y,
-                  style:{
-                    stickerBackgroundColor: '#5ee335',
-                    backgroundOpacity: 1,
-                  }
-                }))); // update sticker
+              for (let j = 0; j < positions.length; j++) 
+              {
+                update_widget(widgets[i].id, positions[i], '#5ee335');
+              }
               
               await sleep(5000);
-              await miro.board.widgets.deleteById(dice.id) // delete sticker
+              await miro.board.widgets.deleteById(dice.id) // delete sticker #5ee335'
             }
             else
             {
