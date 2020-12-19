@@ -20,7 +20,7 @@ function sleep(ms) {
 async function update_widget(widget, position, color)
 {
   await miro.board.widgets.update({ 
-      id: widget.id, 
+      id: widget, 
       text: get_randome().toString(), 
       x: position.x,
       y: position.y,
@@ -70,7 +70,7 @@ miro.onReady(() => {
                     },
                   }))[0];
                   
-                  widgets.push(dice);
+                  widgets.push(dice.id);
               }
 
               for (let i = 0; i < 15; i++) 
@@ -82,7 +82,7 @@ miro.onReady(() => {
                   update_widget(widgets[j], positions[j], color);
                 }
 
-                sleep(50);
+                sleep(100);
               }
   
               for (let i = 0; i < positions.length; i++) 
