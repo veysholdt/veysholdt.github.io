@@ -80,8 +80,10 @@ miro.onReady(() => {
                 for (let j = 0; j < positions.length; j++) 
                 {
                   update_widget(widgets[j], positions[j], color);
-                  sleep(30);
+                  //await sleep(10);
                 }
+
+                await sleep(30);
               }
   
               for (let i = 0; i < positions.length; i++) 
