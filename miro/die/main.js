@@ -22,18 +22,22 @@ miro.onReady(() => {
 
             var num = get_randome();
 
-            let sticker = (await miro.board.widgets.create(
+            let dice = (await miro.board.widgets.create(
               { type:'shape', 
                 text: num.toString(),
                 x: 0.0,
                 y: 0.0,
                 capabilities: {
                 "editable": false
+                },
+                style: {
+                  backgroundColor: white,
+                  fontSize: 10,
                 }
             }))[0];
             
             await sleep(5000);
-            await miro.board.widgets.deleteById(sticker.id) // delete sticker
+            await miro.board.widgets.deleteById(dice.id) // delete sticker
           }
         }
       }
