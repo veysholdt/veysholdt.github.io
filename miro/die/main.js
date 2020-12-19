@@ -9,7 +9,6 @@ async function createWidget(canvasX, canvasY) {
 }
   
 miro.onReady(() => {
-    miro.board.ui.initDraggableItemsContainer(document.body, options)  
     miro.initialize({
       extensionPoints: {
         bottomBar: {
