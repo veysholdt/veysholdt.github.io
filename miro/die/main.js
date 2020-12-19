@@ -35,61 +35,61 @@ miro.onReady(() => {
           svgIcon: icon, //'<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
           onClick: async () => {
 
-            let location = await miro.board.selection.get()
+            let locations = await miro.board.selection.get();
 
-            if (location.length == 1)
+            if (locations.length >= 1)
             {
-              var num = get_randome();
-
               let dice = (await miro.board.widgets.create(
-                { type:'sticker', 
-                  text: num.toString(),
-                  x: location[0].x,
-                  y: location[0].y,
+                locations.map((loc) => ({ 
+                  type:'sticker', 
+                  text: get_randome().toString(),
+                  x: loc[0].x,
+                  y: loc[0].y,
                   capabilities: {
                   "editable": false
                   },
                   style:{
                     backgroundOpacity: 1,
                   },
-              }))[0];
+              }))));
   
               for (let i = 0; i < 15; i++) 
               {
-                var num = get_randome();
                 var color = get_random_color();
   
-                await miro.board.widgets.update({
+                await miro.board.widgets.update(
+                  locations.map((loc) => ({ 
                     id: dice.id, 
-                    text: num.toString(), 
-                    x: location[0].x,
-                    y: location[0].y,
+                    text: get_randome().toString(), 
+                    x: loc[0].x,
+                    y: loc[0].y,
                     style:{
                       stickerBackgroundColor: color,
                       backgroundOpacity: 1,
                     }
-                  }) // update sticker
+                  }))); // update sticker
   
-                  sleep(50)
+                  sleep(50);
               }
   
-              await miro.board.widgets.update({
-                id: dice.id, 
-                text: num.toString(), 
-                x: location[0].x,
-                y: location[0].y,
-                style:{
-                  stickerBackgroundColor: '#5ee335',
-                  backgroundOpacity: 1,
-                }
-              }) // update sticker
+              await miro.board.widgets.update(
+                locations.map((loc) => ({ 
+                  id: dice.id, 
+                  text: get_randome().toString(), 
+                  x: loc[0].x,
+                  y: loc[0].y,
+                  style:{
+                    stickerBackgroundColor: '#5ee335',
+                    backgroundOpacity: 1,
+                  }
+                }))); // update sticker
               
               await sleep(5000);
               await miro.board.widgets.deleteById(dice.id) // delete sticker
             }
             else
             {
-              miro.showNotification('Please select ONE widget as location.')
+              miro.showNotification('Please select at least one widget as location.')
             }
 
            
