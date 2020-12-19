@@ -21,7 +21,7 @@ miro.onReady(() => {
     miro.initialize({
       extensionPoints: {
         bottomBar: {
-          title: 'New Dice 4',
+          title: 'New Dice 5',
           svgIcon: '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
           onClick: async () => {
 
@@ -37,7 +37,7 @@ miro.onReady(() => {
                 },
             }))[0];
 
-            for (let i = 0; i < 10; i++) 
+            for (let i = 0; i < 30; i++) 
             {
               var num = get_randome();
               var color = get_random_color();
@@ -45,12 +45,23 @@ miro.onReady(() => {
               await miro.board.widgets.update({
                   id: dice.id, 
                   text: num.toString(), 
-                  style:{stickerBackgroundColor: color
+                  style:{
+                    stickerBackgroundColor: color,
+                    textColor
                   }
                 }) // update sticker
 
                 sleep(50)
             }
+
+            await miro.board.widgets.update({
+              id: dice.id, 
+              text: num.toString(), 
+              style:{
+                stickerBackgroundColor: '#5ee335',
+                textColor
+              }
+            }) // update sticker
             
             await sleep(5000);
             await miro.board.widgets.deleteById(dice.id) // delete sticker
