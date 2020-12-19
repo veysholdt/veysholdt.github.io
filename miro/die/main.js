@@ -70,28 +70,30 @@ miro.onReady(() => {
                   widgets.push(dice);
               }
 
-              for (let i = 0; i < 15; i++) 
-              {
-                var color = get_random_color();
-                
-                for (let j = 0; j < positions.length; j++) 
-                {
-                  update_widget(widgets[j], positions[j], color);
-                }
+              console.log(widgets[0]);
 
-                sleep(30);
-              }
+              // for (let i = 0; i < 15; i++) 
+              // {
+              //   var color = get_random_color();
+                
+              //   for (let j = 0; j < positions.length; j++) 
+              //   {
+              //     update_widget(widgets[j], positions[j], color);
+              //   }
+
+              //   sleep(30);
+              // }
   
-              for (let i = 0; i < positions.length; i++) 
-              {
-                update_widget(widgets[i], positions[i], '#5ee335');
-              }
+              // for (let i = 0; i < positions.length; i++) 
+              // {
+              //   update_widget(widgets[i], positions[i], '#5ee335');
+              // }
               
               await sleep(4000);
 
               for (let i = 0; i < positions.length; i++) 
               {
-                await miro.board.widgets.deleteById(widgets[i].id) // delete sticker #5ee335'
+                await miro.board.widgets.deleteById(widgets[i]) // delete sticker #5ee335'
               }
             }
             else
