@@ -31,7 +31,7 @@ miro.onReady(() => {
     miro.initialize({
       extensionPoints: {
         bottomBar: {
-          title: 'New Dice',
+          title: 'new dice',
           svgIcon: icon, //'<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
           onClick: async () => {
 
@@ -59,6 +59,8 @@ miro.onReady(() => {
                 await miro.board.widgets.update({
                     id: dice.id, 
                     text: num.toString(), 
+                    x: location[0].x,
+                    y: location[0].y,
                     style:{
                       stickerBackgroundColor: color,
                     }
