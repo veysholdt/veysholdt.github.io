@@ -16,19 +16,17 @@ miro.onReady(() => {
     miro.initialize({
       extensionPoints: {
         bottomBar: {
-          title: 'New Dice 2',
+          title: 'New Dice 3',
           svgIcon: '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
           onClick: async () => {
-            
-            await sleep(1000);
 
             var num = get_randome();
 
             let sticker = (await miro.board.widgets.create(
               { type:'shape', 
                 text: num.toString(),
-                x: window.event.clientX,
-                y: window.event.clientY,
+                x: 0.0,
+                y: 0.0,
                 capabilities: {
                 "editable": false
                 }
