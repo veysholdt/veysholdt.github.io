@@ -67,8 +67,8 @@ miro.onReady(() => {
                     },
                   }));
                   
-                  console.log(dice);
-                  widgets.push(test);
+                  console.log(test);
+                  widgets.push(dice);
               }
               
               let test = widgets[0];
