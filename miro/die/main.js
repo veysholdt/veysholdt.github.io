@@ -67,28 +67,27 @@ miro.onReady(() => {
                     },
                   }))[0];
                   
-                  console.log(dice.id);
                   widgets.push(dice);
               }
               
               console.log(widgets[0].id);
 
-              // for (let i = 0; i < 15; i++) 
-              // {
-              //   var color = get_random_color();
+              for (let i = 0; i < 15; i++) 
+              {
+                var color = get_random_color();
                 
-              //   for (let j = 0; j < positions.length; j++) 
-              //   {
-              //     update_widget(widgets[j], positions[j], color);
-              //   }
+                for (let j = 0; j < positions.length; j++) 
+                {
+                  update_widget(widgets[j], positions[j], color);
+                }
 
-              //   sleep(30);
-              // }
+                sleep(30);
+              }
   
-              // for (let i = 0; i < positions.length; i++) 
-              // {
-              //   update_widget(widgets[i], positions[i], '#5ee335');
-              // }
+              for (let i = 0; i < positions.length; i++) 
+              {
+                update_widget(widgets[i], positions[i], '#5ee335');
+              }
               
               await sleep(4000);
 
