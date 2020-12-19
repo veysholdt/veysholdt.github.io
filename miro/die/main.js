@@ -70,6 +70,7 @@ miro.onReady(() => {
                   widgets.push(dice);
               }
 
+              console.log(widgets[0]);
               console.log(widgets[0].id);
 
               // for (let i = 0; i < 15; i++) 
