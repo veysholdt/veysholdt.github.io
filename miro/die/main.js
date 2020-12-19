@@ -17,10 +17,10 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function update_widget(wid, position, color)
+async function update_widget(widget, position, color)
 {
   await miro.board.widgets.update({ 
-      id: wid, 
+      id: widget.id, 
       text: get_randome().toString(), 
       x: position.x,
       y: position.y,
@@ -68,7 +68,7 @@ miro.onReady(() => {
                   }));
 
                   widgets.push(dice);
-              }    
+              }
 
               for (let i = 0; i < 15; i++) 
               {
@@ -76,19 +76,23 @@ miro.onReady(() => {
                 
                 for (let j = 0; j < positions.length; j++) 
                 {
-                  update_widget(widgets[i].id, positions[i], color);
+                  update_widget(widgets[j], positions[j], color);
                 }
 
                 sleep(50);
               }
   
-              for (let j = 0; j < positions.length; j++) 
+              for (let i = 0; i < positions.length; i++) 
               {
-                update_widget(widgets[i].id, positions[i], '#5ee335');
+                update_widget(widgets[i], positions[i], '#5ee335');
               }
               
               await sleep(5000);
-              await miro.board.widgets.deleteById(dice.id) // delete sticker #5ee335'
+
+              for (let i = 0; i < positions.length; i++) 
+              {
+                await miro.board.widgets.deleteById(widgets[i].id) // delete sticker #5ee335'
+              }
             }
             else
             {
