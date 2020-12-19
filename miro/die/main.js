@@ -43,8 +43,8 @@ miro.onReady(() => {
                 locations.map((loc) => ({ 
                   type:'sticker', 
                   text: get_randome().toString(),
-                  x: loc[0].x,
-                  y: loc[0].y,
+                  x: loc.x,
+                  y: loc.y,
                   capabilities: {
                   "editable": false
                   },
@@ -61,8 +61,8 @@ miro.onReady(() => {
                   locations.map((loc) => ({ 
                     id: dice.id, 
                     text: get_randome().toString(), 
-                    x: loc[0].x,
-                    y: loc[0].y,
+                    x: loc.x,
+                    y: loc.y,
                     style:{
                       stickerBackgroundColor: color,
                       backgroundOpacity: 1,
@@ -76,8 +76,8 @@ miro.onReady(() => {
                 locations.map((loc) => ({ 
                   id: dice.id, 
                   text: get_randome().toString(), 
-                  x: loc[0].x,
-                  y: loc[0].y,
+                  x: loc.x,
+                  y: loc.y,
                   style:{
                     stickerBackgroundColor: '#5ee335',
                     backgroundOpacity: 1,
