@@ -1,0 +1,1 @@
+https://miro.com/oauth/authorize/?response_type=token&client_id=3074457352767828734&redirect_uri=https://veysholdt.github.io/miro/die/
