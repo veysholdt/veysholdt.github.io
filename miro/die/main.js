@@ -49,6 +49,9 @@ miro.onReady(() => {
                   capabilities: {
                   "editable": false
                   },
+                  style:{
+                    backgroundOpacity: 1,
+                  },
               }))[0];
   
               for (let i = 0; i < 15; i++) 
@@ -63,6 +66,7 @@ miro.onReady(() => {
                     y: location[0].y,
                     style:{
                       stickerBackgroundColor: color,
+                      backgroundOpacity: 1,
                     }
                   }) // update sticker
   
@@ -72,8 +76,11 @@ miro.onReady(() => {
               await miro.board.widgets.update({
                 id: dice.id, 
                 text: num.toString(), 
+                x: location[0].x,
+                y: location[0].y,
                 style:{
                   stickerBackgroundColor: '#5ee335',
+                  backgroundOpacity: 1,
                 }
               }) // update sticker
               
