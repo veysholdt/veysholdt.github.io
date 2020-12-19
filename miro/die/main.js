@@ -66,8 +66,9 @@ miro.onReady(() => {
                       backgroundOpacity: 1,
                     },
                   }));
-
-                  widgets.push(dice);
+                  
+                  console.log(dice);
+                  widgets.push(test);
               }
               
               let test = widgets[0];
