@@ -63,7 +63,6 @@ miro.onReady(() => {
                     "editable": false
                     },
                     style:{
-                      stickerBackgroundColor: get_random_color(),
                       backgroundOpacity: 1,
                     },
                   }))[0];
@@ -76,20 +75,21 @@ miro.onReady(() => {
               // {
               //   let color = get_random_color();
                 
-              //   for (let j = 0; j < positions.length; j++) 
-              //   {
-              //     update_widget(widgets[j], positions[j], color);
-              //     await sleep(20);
-              //   }
+              for (let j = 0; j < positions.length; j++) 
+              {
+                let color = get_random_color();
+                update_widget(widgets[j], positions[j], color);
+                await sleep(50);
+              }
 
               //   await sleep(40);
               // }
   
-              // for (let i = 0; i < positions.length; i++) 
-              // {
-              //   update_widget(widgets[i], positions[i], '#5ee335');
-              //   await sleep(20);
-              // }
+              for (let i = 0; i < positions.length; i++) 
+              {
+                update_widget(widgets[i], positions[i], '#5ee335');
+                await sleep(50);
+              }
               
               await sleep(5000);
 
