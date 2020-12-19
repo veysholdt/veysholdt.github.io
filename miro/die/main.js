@@ -37,7 +37,7 @@ miro.onReady(() => {
                 },
             }))[0];
 
-            for (let i = 0; i < 30; i++) 
+            for (let i = 0; i < 25; i++) 
             {
               var num = get_randome();
               var color = get_random_color();
@@ -58,7 +58,6 @@ miro.onReady(() => {
               text: num.toString(), 
               style:{
                 stickerBackgroundColor: '#5ee335',
-                textColor
               }
             }) // update sticker
             
