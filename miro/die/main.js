@@ -67,7 +67,7 @@ miro.onReady(() => {
                     },
                   }));
                   
-                  console.log(test);
+                  console.log(dice.id);
                   widgets.push(dice);
               }
               
