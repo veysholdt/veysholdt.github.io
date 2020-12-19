@@ -4,31 +4,4 @@
     <script src="https://miro.com/app/static/sdk.1.1.js"></script>
     <script src="main.js"></script>
 </head>
-<!-- <body>
-    <div id="box" style="background: red; width: 50px; height: 50px;"></div>
-    <script>    
-    async function createWidget(canvasX, canvasY) {
-        const widget = (await miro.board.widgets.create({type: 'shape', x:canvasX || 0, y:canvasY || 0}))[0]
-        miro.board.viewport.zoomToObject(widget)
-    }
-    
-    const options = {
-      draggableItemSelector: '#box',
-      onClick: async (targetElement) => {
-        createWidget()
-      },
-      getDraggableItemPreview: (targetElement) => { //drag-started
-        return {url: HOTSPOT_PREVIEW}
-      },
-      onDrop: (canvasX, canvasY) => {
-        createWidget(canvasX, canvasY)
-      }
-    }
-    
-    miro.onReady(() => {
-      miro.board.ui.initDraggableItemsContainer(document.body, options)  
-    })
-  
-    </script>
-  </body> -->
 </html>
