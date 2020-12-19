@@ -74,26 +74,26 @@ miro.onReady(() => {
                   await sleep(20);
               }
 
-              for (let i = 0; i < 15; i++) 
-              {
-                let color = get_random_color();
+              // for (let i = 0; i < 15; i++) 
+              // {
+              //   let color = get_random_color();
                 
-                for (let j = 0; j < positions.length; j++) 
-                {
-                  update_widget(widgets[j], positions[j], color);
-                  await sleep(20);
-                }
+              //   for (let j = 0; j < positions.length; j++) 
+              //   {
+              //     update_widget(widgets[j], positions[j], color);
+              //     await sleep(20);
+              //   }
 
-                await sleep(40);
-              }
+              //   await sleep(40);
+              // }
   
-              for (let i = 0; i < positions.length; i++) 
-              {
-                update_widget(widgets[i], positions[i], '#5ee335');
-                await sleep(20);
-              }
+              // for (let i = 0; i < positions.length; i++) 
+              // {
+              //   update_widget(widgets[i], positions[i], '#5ee335');
+              //   await sleep(20);
+              // }
               
-              await sleep(4000);
+              await sleep(5000);
 
               for (let i = 0; i < positions.length; i++) 
               {
