@@ -47,7 +47,6 @@ miro.onReady(() => {
                   text: num.toString(), 
                   style:{
                     stickerBackgroundColor: color,
-                    textColor
                   }
                 }) // update sticker
 
