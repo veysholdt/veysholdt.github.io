@@ -7,7 +7,11 @@ function get_randome()
 async function createWidget(canvasX, canvasY) {
     const widget = (await miro.board.widgets.create({type: 'shape', x:canvasX || 0, y:canvasY || 0}))[0]
 }
-  
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 miro.onReady(() => {
     miro.initialize({
       extensionPoints: {
@@ -23,7 +27,7 @@ miro.onReady(() => {
               }
             }))[0];
             
-            setTimeout(() => { console.log("Waiting to delete dice..."); }, 2000);
+            await sleep(2000);
             await miro.board.widgets.deleteById(sticker.id) // delete sticker
           }
         }
