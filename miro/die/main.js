@@ -12,7 +12,7 @@ miro.onReady(() => {
     miro.initialize({
       extensionPoints: {
         bottomBar: {
-          title: 'New Dice',
+          title: 'New Dice 1',
           svgIcon: '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
           onClick: async () => {
             let sticker = (await miro.board.widgets.create(
@@ -23,8 +23,7 @@ miro.onReady(() => {
               }
             }))[0];
             
-            await waitOneSec();
-            await waitOneSec();
+            setTimeout(() => { console.log("Waiting to delete dice..."); }, 2000);
             await miro.board.widgets.deleteById(sticker.id) // delete sticker
           }
         }
