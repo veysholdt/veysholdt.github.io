@@ -21,7 +21,13 @@ function sleep(ms) {
 
 miro.onReady(() => {
   const icon =
-    '<g><title>Layer 1</title><g id="svg_8"><ellipse fill="#fff" stroke="#000" stroke-width="2" cx="42.24758" cy="40.33657" id="svg_4" rx="3.55358" ry="3.25476"/><ellipse fill="#fff" stroke="#000" stroke-width="2" cx="62.35576" cy="59.10278" id="svg_5" rx="3.55358" ry="3.25476"/><g id="svg_10"><rect x="2.06773" y="1.93632" id="svg_1" height="20" width="20" stroke-width="2" stroke="#000" fill="#fff"/><ellipse fill="#fff" stroke="#000" stroke-width="2" cx="6.45464" cy="6.55944" id="svg_3" rx="1.8453" ry="1.74359"/><ellipse fill="#fff" stroke="#000" stroke-width="2" cx="11.84228" cy="11.68427" id="svg_7" rx="1.8453" ry="1.74359"/><ellipse fill="#fff" stroke="#000" stroke-width="2" cx="17.36134" cy="17.07192" id="svg_9" rx="1.8453" ry="1.74359"/></g></g></g>'
+    '<g> \
+    <title>Layer 1</title> \
+    <rect rx="2" x="1.93936" y="1.93632" id="svg_1" height="20" width="20" stroke-width="2" stroke="#000" fill="#fff"/> \
+    <ellipse fill="#fff" stroke="#000" stroke-width="2" cx="6.96379" cy="6.92374" id="svg_3" rx="1.8453" ry="1.74359"/> \
+    <ellipse fill="#fff" stroke="#000" stroke-width="2" cx="11.89606" cy="11.77534" id="svg_7" rx="1.8453" ry="1.74359"/> \
+    <ellipse fill="#fff" stroke="#000" stroke-width="2" cx="16.86867" cy="16.61655" id="svg_9" rx="1.8453" ry="1.74359"/> \
+    </g>'
     miro.initialize({
       extensionPoints: {
         bottomBar: {
@@ -41,7 +47,7 @@ miro.onReady(() => {
                 },
             }))[0];
 
-            for (let i = 0; i < 17; i++) 
+            for (let i = 0; i < 15; i++) 
             {
               var num = get_randome();
               var color = get_random_color();
