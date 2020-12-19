@@ -65,15 +65,13 @@ miro.onReady(() => {
                     style:{
                       backgroundOpacity: 1,
                     },
-                  }));
+                  }))[0];
                   
                   console.log(dice.id);
                   widgets.push(dice);
               }
               
-              let test = widgets[0];
-              console.log(test);
-              console.log(test.id);
+              console.log(widgets[0].id);
 
               // for (let i = 0; i < 15; i++) 
               // {
