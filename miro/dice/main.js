@@ -68,20 +68,20 @@ miro.onReady(() => {
                   }))[0];
                   
                   widgets.push(dice.id);
-                  //await sleep(20);
+                  await sleep(200);
               }
                 
               for (let j = 0; j < positions.length; j++) // update every sticker
               {
                 let color = get_random_color();
                 update_widget(widgets[j], positions[j], color);
-                //await sleep(50);
+                await sleep(200);
               }
 
               for (let i = 0; i < positions.length; i++) // update every sticker for final result
               {
                 update_widget(widgets[i], positions[i], '#5ee335');
-                //await sleep(50);
+                await sleep(200);
               }
               
               await sleep(5000);
@@ -89,7 +89,7 @@ miro.onReady(() => {
               for (let i = 0; i < positions.length; i++) // remove stickers again
               {
                 await miro.board.widgets.deleteById(widgets[i]) // delete sticker
-                //await sleep(20);
+                await sleep(200);
               }
             }
             else
