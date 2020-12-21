@@ -96,17 +96,15 @@ miro.onReady(() => {
                   await sleep(200);
                 }
               }
-              else // if user is not authorized
+              else
               {
-                miro.board.ui.openModel('authorize.html');
+                miro.showNotification('Please select at least one and not more than five existing widgets.')
               }
             }
-            else
+            else // if user is not authorized
             {
-              miro.showNotification('Please select at least one and not more than five existing widgets.')
+              miro.board.ui.openModal('authorize.html');
             }
-
-           
           }
         }
       }
