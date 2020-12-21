@@ -94,7 +94,7 @@ miro.onReady(() => {
             }
             else
             {
-              miro.showNotification('Please select at least one and not more than five existing widget.')
+              miro.showNotification('Please select at least one and not more than five existing widgets.')
             }
 
            
