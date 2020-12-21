@@ -50,9 +50,9 @@ miro.onReady(() => {
             let positions = await miro.board.selection.get();
             let widgets = [];
 
-            if (positions.length >= 1)
+            if (positions.length >= 1 && positions.length <= 5) // check if at least one and max. 5 widgets are selected
             {
-              for (let i = 0; i < positions.length; i++) 
+              for (let i = 0; i < positions.length; i++) // create a new sticker for every selected widget 
               {
                 let dice = (await miro.board.widgets.create({ 
                     type:'sticker', 
@@ -68,40 +68,33 @@ miro.onReady(() => {
                   }))[0];
                   
                   widgets.push(dice.id);
-                  await sleep(20);
+                  //await sleep(20);
               }
-
-              // for (let i = 0; i < 15; i++) 
-              // {
-              //   let color = get_random_color();
                 
-              for (let j = 0; j < positions.length; j++) 
+              for (let j = 0; j < positions.length; j++) // update every sticker
               {
                 let color = get_random_color();
                 update_widget(widgets[j], positions[j], color);
-                await sleep(50);
+                //await sleep(50);
               }
 
-              //   await sleep(40);
-              // }
-  
-              for (let i = 0; i < positions.length; i++) 
+              for (let i = 0; i < positions.length; i++) // update every sticker for final result
               {
                 update_widget(widgets[i], positions[i], '#5ee335');
-                await sleep(50);
+                //await sleep(50);
               }
               
               await sleep(5000);
 
-              for (let i = 0; i < positions.length; i++) 
+              for (let i = 0; i < positions.length; i++) // remove stickers again
               {
-                await miro.board.widgets.deleteById(widgets[i]) // delete sticker #5ee335'
-                await sleep(20);
+                await miro.board.widgets.deleteById(widgets[i]) // delete sticker
+                //await sleep(20);
               }
             }
             else
             {
-              miro.showNotification('Please select at least one existing widget as location.')
+              miro.showNotification('Please select at least one and not more than five existing widget.')
             }
 
            
