@@ -103,7 +103,7 @@ miro.onReady(() => {
             }
             else // if user is not authorized
             {
-              miro.board.ui.openModal('authorize.html');
+              miro.board.ui.openLeftSidebar('authorize.html');
             }
           }
         }
