@@ -32,7 +32,7 @@ async function update_widget(widget, position, color)
 }
 
 miro.onReady(() => {
-  const icon =
+  const icon24 =
     '<g> \
     <title>Layer 1</title> \
     <rect rx="2" x="1.93936" y="1.93632" id="svg_1" height="20" width="20" stroke-width="2" stroke="#000" fill="#fff"/> \
@@ -44,52 +44,61 @@ miro.onReady(() => {
       extensionPoints: {
         bottomBar: {
           title: 'new dice',
-          svgIcon: icon, //'<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
+          svgIcon: icon24, //'<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
           onClick: async () => {
+            
+            const auth = await miro.isAuthorized();
 
-            let positions = await miro.board.selection.get();
-            let widgets = [];
-
-            if (positions.length >= 1 && positions.length <= 5) // check if at least one and max. 5 widgets are selected
+            if (auth) // if user is authorized
             {
-              for (let i = 0; i < positions.length; i++) // create a new sticker for every selected widget 
+              let positions = await miro.board.selection.get();
+              let widgets = [];
+
+              if (positions.length >= 1 && positions.length <= 5) // check if at least one and max. 5 widgets are selected
               {
-                let dice = (await miro.board.widgets.create({ 
-                    type:'sticker', 
-                    text: get_randome().toString(),
-                    x: positions[i].x,
-                    y: positions[i].y,
-                    capabilities: {
-                    "editable": false
-                    },
-                    style:{
-                      backgroundOpacity: 1,
-                    },
-                  }))[0];
+                for (let i = 0; i < positions.length; i++) // create a new sticker for every selected widget 
+                {
+                  let dice = (await miro.board.widgets.create({ 
+                      type:'sticker', 
+                      text: get_randome().toString(),
+                      x: positions[i].x,
+                      y: positions[i].y,
+                      capabilities: {
+                      "editable": false
+                      },
+                      style:{
+                        backgroundOpacity: 1,
+                      },
+                    }))[0];
+                    
+                    widgets.push(dice.id);
+                    await sleep(200);
+                }
                   
-                  widgets.push(dice.id);
+                for (let j = 0; j < positions.length; j++) // update every sticker
+                {
+                  let color = get_random_color();
+                  update_widget(widgets[j], positions[j], color);
                   await sleep(200);
-              }
+                }
+
+                for (let i = 0; i < positions.length; i++) // update every sticker for final result
+                {
+                  update_widget(widgets[i], positions[i], '#5ee335');
+                  await sleep(200);
+                }
                 
-              for (let j = 0; j < positions.length; j++) // update every sticker
-              {
-                let color = get_random_color();
-                update_widget(widgets[j], positions[j], color);
-                await sleep(200);
-              }
+                await sleep(5000);
 
-              for (let i = 0; i < positions.length; i++) // update every sticker for final result
-              {
-                update_widget(widgets[i], positions[i], '#5ee335');
-                await sleep(200);
+                for (let i = 0; i < positions.length; i++) // remove stickers again
+                {
+                  await miro.board.widgets.deleteById(widgets[i]) // delete sticker
+                  await sleep(200);
+                }
               }
-              
-              await sleep(5000);
-
-              for (let i = 0; i < positions.length; i++) // remove stickers again
+              else // if user is not authorized
               {
-                await miro.board.widgets.deleteById(widgets[i]) // delete sticker
-                await sleep(200);
+                miro.board.ui.openModel('authorize.html');
               }
             }
             else
