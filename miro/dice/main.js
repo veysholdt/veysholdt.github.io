@@ -52,7 +52,7 @@ miro.onReady(() => {
     miro.initialize({
       extensionPoints: {
         toolbar: {
-          title: 'new dice',
+          title: 'Dice',
           toolbarSvgIcon: icon24,
           librarySvgIcon: icon48,
           onClick: async () => {
