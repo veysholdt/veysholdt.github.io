@@ -42,8 +42,8 @@ miro.onReady(() => {
     </g>'
     miro.initialize({
       extensionPoints: {
-        bottomBar: {
-          title: 'new dice',
+        toolBar: {
+          title: 'new dice 1',
           svgIcon: icon24, //'<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
           onClick: async () => {
             
@@ -98,7 +98,14 @@ miro.onReady(() => {
               }
               else
               {
-                miro.showNotification('Please select at least one and not more than five existing widgets.')
+                if(positions.length < 1)
+                {
+                  miro.showNotification('Please select at least one existing widget.')
+                }
+                if(positions.length > 5)
+                {
+                  miro.showNotification('You are selecting to many widgets, please pick 5 or less.')
+                }
               }
             }
             else // if user is not authorized
