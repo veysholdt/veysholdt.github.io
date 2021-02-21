@@ -40,12 +40,13 @@ miro.onReady(() => {
     <ellipse fill="#fff" stroke="#000" stroke-width="2" cx="11.89606" cy="11.77534" id="svg_7" rx="1.8453" ry="1.74359"/> \
     <ellipse fill="#fff" stroke="#000" stroke-width="2" cx="16.86867" cy="16.61655" id="svg_9" rx="1.8453" ry="1.74359"/> \
     </g>'
+    const icon48 = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 640 640" width="640" height="640"><defs><path d="M37.94 1.94C40.61 1.94 41.94 3.27 41.94 5.94C41.94 25.14 41.94 35.8 41.94 37.94C41.94 40.6 40.61 41.94 37.94 41.94C18.74 41.94 8.07 41.94 5.94 41.94C3.27 41.94 1.94 40.6 1.94 37.94C1.94 18.74 1.94 8.07 1.94 5.94C1.94 3.27 3.27 1.94 5.94 1.94C25.14 1.94 35.81 1.94 37.94 1.94Z" id="iMfV1gZv"></path><path d="M15.68 11.91C15.68 13.84 14.03 15.4 11.99 15.4C9.95 15.4 8.3 13.84 8.3 11.91C8.3 9.99 9.95 8.42 11.99 8.42C14.03 8.42 15.68 9.99 15.68 11.91Z" id="b1gGRCx4Ex"></path><path d="M25.54 21.61C25.54 23.54 23.89 25.1 21.85 25.1C19.81 25.1 18.16 23.54 18.16 21.61C18.16 19.69 19.81 18.13 21.85 18.13C23.89 18.13 25.54 19.69 25.54 21.61Z" id="c1KrlQqy"></path><path d="M35.49 31.3C35.49 33.22 33.84 34.78 31.8 34.78C29.76 34.78 28.11 33.22 28.11 31.3C28.11 29.37 29.76 27.81 31.8 27.81C33.84 27.81 35.49 29.37 35.49 31.3Z" id="a5JkACl8h6"></path></defs><g><g><g><use xlink:href="#iMfV1gZv" opacity="1" fill="#ffffff" fill-opacity="1"></use><g><use xlink:href="#iMfV1gZv" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="4" stroke-opacity="1"></use></g></g><g><use xlink:href="#b1gGRCx4Ex" opacity="1" fill="#ffffff" fill-opacity="1"></use><g><use xlink:href="#b1gGRCx4Ex" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="4" stroke-opacity="1"></use></g></g><g><use xlink:href="#c1KrlQqy" opacity="1" fill="#ffffff" fill-opacity="1"></use><g><use xlink:href="#c1KrlQqy" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="4" stroke-opacity="1"></use></g></g><g><use xlink:href="#a5JkACl8h6" opacity="1" fill="#ffffff" fill-opacity="1"></use><g><use xlink:href="#a5JkACl8h6" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="4" stroke-opacity="1"></use></g></g></g></g></svg>'
     miro.initialize({
       extensionPoints: {
         toolbar: {
           title: 'new dice',
           toolbarSvgIcon: icon24,
-          librarySvgIcon: icon24,
+          librarySvgIcon: icon48,
           onClick: async () => {
             
             const auth = await miro.isAuthorized();
