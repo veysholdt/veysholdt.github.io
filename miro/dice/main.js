@@ -54,7 +54,7 @@ miro.onReady(() => {
         toolbar: {
           title: 'new dice',
           toolbarSvgIcon: icon24,
-          librarySvgIcon: icon48,
+          librarySvgIcon: icon24,
           onClick: async () => {
             
             const auth = await miro.isAuthorized();
