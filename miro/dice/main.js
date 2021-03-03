@@ -120,7 +120,13 @@ miro.onReady(() => {
             }
             else // if user is not authorized
             {
-              miro.board.ui.openModal('notAuthorized.html');
+              miro.authorize({
+                response_type: 'token',
+                redirect_uri: 'https://veysholdt.github.io/miro/dice/authorized.html'
+                }).then(() => {
+                // run the app once again
+              });
+            
             }
           }
         }
