@@ -31,7 +31,7 @@ async function update_widget(widget, position, color)
     }); // update sticker
 }
 
-function dice_app()
+async function dice_app()
 {
   let positions = await miro.board.selection.get();
   let widgets = [];
