@@ -23,16 +23,17 @@ async function update_widget(widget, color)
 
   console.log(temp_widget);
 
-  await miro.board.widgets.update({ 
-      id: widget.id, 
-      text: get_randome().toString(), 
-      // x: widget.x,
-      // y: widget.y,
-      style:{
-        stickerBackgroundColor: color,
-        backgroundOpacity: 1,
-      }
-    }); // update sticker
+  // await miro.board.widgets.update({ 
+  //     id: widget.id, 
+  //     text: get_randome().toString(), 
+  //     // x: widget.x,
+  //     // y: widget.y,
+  //     style:{
+  //       stickerBackgroundColor: color,
+  //       backgroundOpacity: 1,
+  //     }
+  //   }); // update sticker
+  widget.text = get_randome().toString();
 }
 
 var dice_widgets = [];
@@ -134,7 +135,7 @@ miro.onReady(() => {
     miro.initialize({
       extensionPoints: {
         toolbar: {
-          title: 'Dice TEST 3',
+          title: 'Dice TEST 4',
           toolbarSvgIcon: icon24,
           librarySvgIcon: icon48,
           onClick: async () => {
