@@ -19,10 +19,6 @@ function sleep(ms) {
 
 async function update_widget(widget, color)
 {
-  let temp_widget = widget.get();
-
-  console.log(temp_widget);
-
   // await miro.board.widgets.update({ 
   //     id: widget.id, 
   //     text: get_randome().toString(), 
@@ -135,7 +131,7 @@ miro.onReady(() => {
     miro.initialize({
       extensionPoints: {
         toolbar: {
-          title: 'Dice TEST 4',
+          title: 'Dice TEST 5',
           toolbarSvgIcon: icon24,
           librarySvgIcon: icon48,
           onClick: async () => {
