@@ -20,10 +20,10 @@ function sleep(ms) {
 async function update_widget(widget, position, color)
 {
   await miro.board.widgets.update({ 
-      id: widget, 
+      id: widget.id, 
       text: get_randome().toString(), 
-      // x: position.x,
-      // y: position.y,
+      // x: widget.x,
+      // y: widget.y,
       style:{
         stickerBackgroundColor: color,
         backgroundOpacity: 1,
@@ -31,7 +31,7 @@ async function update_widget(widget, position, color)
     }); // update sticker
 }
 
-var widgets = [];
+var dice_widgets = [];
 
 async function dice_app()
 {
@@ -54,20 +54,20 @@ async function dice_app()
           },
         }))[0];
         
-        widgets.push(dice.id);
+        dice_widgets.push(dice);
         await sleep(200);
     }
       
     for (let j = 0; j < positions.length; j++) // update every sticker
     {
       let color = get_random_color();
-      update_widget(widgets[j], positions[j], color);
+      update_widget(dice_widgets[j], positions[j], color);
       await sleep(200);
     }
 
     for (let i = 0; i < positions.length; i++) // update every sticker for final result
     {
-      update_widget(widgets[i], positions[i], '#5ee335');
+      update_widget(dice_widgets[i], positions[i], '#5ee335');
       await sleep(200);
     }
     
@@ -130,7 +130,7 @@ miro.onReady(() => {
     miro.initialize({
       extensionPoints: {
         toolbar: {
-          title: 'Dice TEST 5',
+          title: 'Dice TEST 6',
           toolbarSvgIcon: icon24,
           librarySvgIcon: icon48,
           onClick: async () => {
