@@ -64,20 +64,20 @@ async function dice_app()
         update_widget(positions[i], color);
       }
 
-      await sleep(300);
+      await sleep(400);
     }
       
     for (let j = 0; j < dice_widgets.length; j++) // update every sticker
     {
       let color = get_random_color();
       update_widget(dice_widgets[j], color);
-      await sleep(300);
+      await sleep(400);
     }
 
     for (let i = 0; i < dice_widgets.length; i++) // update every sticker for final result
     {
       update_widget(dice_widgets[i], '#5ee335');
-      await sleep(300);
+      await sleep(400);
     }
   }
   else
