@@ -83,7 +83,7 @@ async function dice_app()
   {
 
     // console.log(positions);
-    console.log(widgets);
+    console.log(dice_widgets);
 
     // for (let j = 0; j < widgets.length; j++) // update every sticker
     // {
@@ -130,7 +130,7 @@ miro.onReady(() => {
     miro.initialize({
       extensionPoints: {
         toolbar: {
-          title: 'Dice TEST 6',
+          title: 'Dice TEST 0',
           toolbarSvgIcon: icon24,
           librarySvgIcon: icon48,
           onClick: async () => {
