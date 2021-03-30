@@ -17,13 +17,13 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function update_widget(widget, position, color)
+async function update_widget(widget, color)
 {
   await miro.board.widgets.update({ 
       id: widget.id, 
       text: get_randome().toString(), 
-      // x: widget.x,
-      // y: widget.y,
+      x: widget.x,
+      y: widget.y,
       style:{
         stickerBackgroundColor: color,
         backgroundOpacity: 1,
@@ -58,16 +58,16 @@ async function dice_app()
         await sleep(200);
     }
       
-    for (let j = 0; j < positions.length; j++) // update every sticker
+    for (let j = 0; j < dice_widgets.length; j++) // update every sticker
     {
       let color = get_random_color();
-      update_widget(dice_widgets[j], positions[j], color);
+      update_widget(dice_widgets[j], color);
       await sleep(200);
     }
 
-    for (let i = 0; i < positions.length; i++) // update every sticker for final result
+    for (let i = 0; i < dice_widgets.length; i++) // update every sticker for final result
     {
-      update_widget(dice_widgets[i], positions[i], '#5ee335');
+      update_widget(dice_widgets[i], '#5ee335');
       await sleep(200);
     }
     
@@ -85,18 +85,18 @@ async function dice_app()
     // console.log(positions);
     console.log(dice_widgets);
 
-    // for (let j = 0; j < widgets.length; j++) // update every sticker
-    // {
-    //   let color = get_random_color();
-    //   update_widget(widgets[j], positions[j], color);
-    //   await sleep(200);
-    // }
+    for (let j = 0; j < dice_widgets.length; j++) // update every sticker
+    {
+      let color = get_random_color();
+      update_widget(dice_widgets[j], color);
+      await sleep(200);
+    }
 
-    // for (let i = 0; i < widgets.length; i++) // update every sticker for final result
-    // {
-    //   update_widget(widgets[i], positions[i], '#5ee335');
-    //   await sleep(200);
-    // }
+    for (let i = 0; i < dice_widgets.length; i++) // update every sticker for final result
+    {
+      update_widget(dice_widgets[i], '#5ee335');
+      await sleep(200);
+    }
 
     // if(positions.length < 1)
     // {
@@ -130,7 +130,7 @@ miro.onReady(() => {
     miro.initialize({
       extensionPoints: {
         toolbar: {
-          title: 'Dice TEST 0',
+          title: 'Dice TEST 1',
           toolbarSvgIcon: icon24,
           librarySvgIcon: icon48,
           onClick: async () => {
