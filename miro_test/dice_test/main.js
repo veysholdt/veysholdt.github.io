@@ -33,7 +33,7 @@ async function update_widget(widget, position, color)
 
 async function dice_app()
 {
-  let positions = await miro.board.selection.get();
+  var positions = await miro.board.selection.get();
   var widgets = [];
 
   if (positions.length >= 1 && positions.length <= 5) // check if at least one and max. 5 widgets are selected
