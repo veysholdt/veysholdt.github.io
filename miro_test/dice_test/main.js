@@ -31,10 +31,12 @@ async function update_widget(widget, position, color)
     }); // update sticker
 }
 
+var positions;
+var widgets = [];
+
 async function dice_app()
 {
-  var positions = await miro.board.selection.get();
-  var widgets = [];
+  positions = await miro.board.selection.get();
 
   if (positions.length >= 1 && positions.length <= 5) // check if at least one and max. 5 widgets are selected
   {
