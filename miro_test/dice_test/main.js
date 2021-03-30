@@ -34,7 +34,7 @@ async function update_widget(widget, position, color)
 async function dice_app()
 {
   let positions = await miro.board.selection.get();
-  let widgets = [];
+  var widgets = [];
 
   if (positions.length >= 1 && positions.length <= 5) // check if at least one and max. 5 widgets are selected
   {
@@ -70,24 +70,38 @@ async function dice_app()
       await sleep(200);
     }
     
-    await sleep(5000);
+    // await sleep(5000);
 
-    for (let i = 0; i < positions.length; i++) // remove stickers again
-    {
-      await miro.board.widgets.deleteById(widgets[i]) // delete sticker
-      await sleep(200);
-    }
+    // for (let i = 0; i < positions.length; i++) // remove stickers again
+    // {
+    //   await miro.board.widgets.deleteById(widgets[i]) // delete sticker
+    //   await sleep(200);
+    // }
   }
   else
   {
-    if(positions.length < 1)
+
+    for (let j = 0; j < positions.length; j++) // update every sticker
     {
-      miro.showNotification('Please select at least one existing widget.')
+      let color = get_random_color();
+      update_widget(widgets[j], positions[j], color);
+      await sleep(200);
     }
-    if(positions.length > 5)
+
+    for (let i = 0; i < positions.length; i++) // update every sticker for final result
     {
-      miro.showNotification('You are selecting to many widgets, please pick 5 or less.')
+      update_widget(widgets[i], positions[i], '#5ee335');
+      await sleep(200);
     }
+
+    // if(positions.length < 1)
+    // {
+    //   miro.showNotification('Please select at least one existing widget.')
+    // }
+    // if(positions.length > 5)
+    // {
+    //   miro.showNotification('You are selecting to many widgets, please pick 5 or less.')
+    // }
   }
 }
 
@@ -112,7 +126,7 @@ miro.onReady(() => {
     miro.initialize({
       extensionPoints: {
         toolbar: {
-          title: 'Dice TEST',
+          title: 'Dice TEST 0',
           toolbarSvgIcon: icon24,
           librarySvgIcon: icon48,
           onClick: async () => {
