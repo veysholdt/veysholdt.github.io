@@ -22,8 +22,8 @@ async function update_widget(widget, color)
   await miro.board.widgets.update({ 
       id: widget.id, 
       text: get_randome().toString(), 
-      x: widget.x,
-      y: widget.y,
+      // x: widget.x,
+      // y: widget.y,
       style:{
         stickerBackgroundColor: color,
         backgroundOpacity: 1,
@@ -130,7 +130,7 @@ miro.onReady(() => {
     miro.initialize({
       extensionPoints: {
         toolbar: {
-          title: 'Dice TEST 1',
+          title: 'Dice TEST 2',
           toolbarSvgIcon: icon24,
           librarySvgIcon: icon48,
           onClick: async () => {
