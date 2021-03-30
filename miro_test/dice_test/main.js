@@ -57,6 +57,8 @@ async function dice_app()
           
           dice_widgets.push(dice);
           await miro.board.widgets.deleteById(positions[i].id);
+
+          console.log("STICKER");
       }
       else
       {
@@ -113,7 +115,7 @@ miro.onReady(() => {
     miro.initialize({
       extensionPoints: {
         toolbar: {
-          title: 'Dice TEST 1',
+          title: 'Dice TEST 2',
           toolbarSvgIcon: icon24,
           librarySvgIcon: icon48,
           onClick: async () => {
