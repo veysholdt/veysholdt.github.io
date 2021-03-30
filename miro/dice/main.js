@@ -17,13 +17,13 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function update_widget(widget, position, color)
+async function update_widget(widget, color)
 {
   await miro.board.widgets.update({ 
-      id: widget, 
+      id: widget.id, 
       text: get_randome().toString(), 
-      x: position.x,
-      y: position.y,
+      x: widget.x,
+      y: widget.y,
       style:{
         stickerBackgroundColor: color,
         backgroundOpacity: 1,
@@ -34,48 +34,50 @@ async function update_widget(widget, position, color)
 async function dice_app()
 {
   let positions = await miro.board.selection.get();
-  let widgets = [];
+  let dice_widgets = [];
 
   if (positions.length >= 1 && positions.length <= 5) // check if at least one and max. 5 widgets are selected
   {
     for (let i = 0; i < positions.length; i++) // create a new sticker for every selected widget 
     {
-      let dice = (await miro.board.widgets.create({ 
-          type:'sticker', 
-          text: get_randome().toString(),
-          x: positions[i].x,
-          y: positions[i].y,
-          capabilities: {
-          "editable": false
-          },
-          style:{
-            backgroundOpacity: 1,
-          },
-        }))[0];
-        
-        widgets.push(dice.id);
-        await sleep(200);
+      if(positions[i].type != 'STICKER')
+      {
+        let dice = (await miro.board.widgets.create({ 
+            type:'STICKER', 
+            text: get_randome().toString(),
+            x: positions[i].x,
+            y: positions[i].y,
+            capabilities: {
+            "editable": false
+            },
+            style:{
+              backgroundOpacity: 1,
+            },
+          }))[0];
+          
+          dice_widgets.push(dice);
+      }
+      else
+      {
+        dice_widgets.push(positions[i]);
+        let color = get_random_color();
+        update_widget(positions[i], color);
+      }
+
+      await sleep(400);
     }
       
-    for (let j = 0; j < positions.length; j++) // update every sticker
+    for (let j = 0; j < dice_widgets.length; j++) // update every sticker
     {
       let color = get_random_color();
-      update_widget(widgets[j], positions[j], color);
-      await sleep(200);
+      update_widget(dice_widgets[j], color);
+      await sleep(400);
     }
 
-    for (let i = 0; i < positions.length; i++) // update every sticker for final result
+    for (let i = 0; i < dice_widgets.length; i++) // update every sticker for final result
     {
-      update_widget(widgets[i], positions[i], '#5ee335');
-      await sleep(200);
-    }
-    
-    await sleep(5000);
-
-    for (let i = 0; i < positions.length; i++) // remove stickers again
-    {
-      await miro.board.widgets.deleteById(widgets[i]) // delete sticker
-      await sleep(200);
+      update_widget(dice_widgets[i], '#5ee335');
+      await sleep(400);
     }
   }
   else
@@ -112,7 +114,7 @@ miro.onReady(() => {
     miro.initialize({
       extensionPoints: {
         toolbar: {
-          title: 'Dice',
+          title: 'Dice test',
           toolbarSvgIcon: icon24,
           librarySvgIcon: icon48,
           onClick: async () => {
