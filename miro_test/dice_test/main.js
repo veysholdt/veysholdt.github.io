@@ -43,7 +43,7 @@ async function dice_app()
       if(positions[i].type != 'STICKER')
       {
         let dice = (await miro.board.widgets.create({ 
-            type:'sticker', 
+            type:'STICKER', 
             text: get_randome().toString(),
             x: positions[i].x,
             y: positions[i].y,
@@ -57,16 +57,12 @@ async function dice_app()
           
           dice_widgets.push(dice);
           await miro.board.widgets.deleteById(positions[i].id);
-
-          console.log(positions[i].type);
-          console.log("...");
       }
       else
       {
         dice_widgets.push(positions[i]);
         let color = get_random_color();
         update_widget(positions[i], color);
-        console.log(positions[i].type);
       }
 
       await sleep(200);
