@@ -56,7 +56,6 @@ async function dice_app()
           }))[0];
           
           dice_widgets.push(dice);
-          await miro.board.widgets.deleteById(positions[i].id);
       }
       else
       {
