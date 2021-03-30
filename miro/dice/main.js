@@ -114,7 +114,7 @@ miro.onReady(() => {
     miro.initialize({
       extensionPoints: {
         toolbar: {
-          title: 'Dice test',
+          title: 'Dice',
           toolbarSvgIcon: icon24,
           librarySvgIcon: icon48,
           onClick: async () => {
