@@ -36,7 +36,8 @@ var widgets = [];
 
 async function dice_app()
 {
-  positions = await miro.board.selection.get();
+  let p = await miro.board.selection.get();
+  positions = p;
 
   if (positions.length >= 1 && positions.length <= 5) // check if at least one and max. 5 widgets are selected
   {
@@ -82,6 +83,9 @@ async function dice_app()
   }
   else
   {
+
+    console.log(positions);
+    console.log(widgets);
 
     for (let j = 0; j < positions.length; j++) // update every sticker
     {
