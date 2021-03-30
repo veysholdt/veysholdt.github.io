@@ -22,8 +22,8 @@ async function update_widget(widget, position, color)
   await miro.board.widgets.update({ 
       id: widget, 
       text: get_randome().toString(), 
-      x: position.x,
-      y: position.y,
+      // x: position.x,
+      // y: position.y,
       style:{
         stickerBackgroundColor: color,
         backgroundOpacity: 1,
@@ -31,13 +31,11 @@ async function update_widget(widget, position, color)
     }); // update sticker
 }
 
-var positions;
 var widgets = [];
 
 async function dice_app()
 {
-  let p = await miro.board.selection.get();
-  positions = p;
+  let positions = await miro.board.selection.get();
 
   if (positions.length >= 1 && positions.length <= 5) // check if at least one and max. 5 widgets are selected
   {
@@ -84,21 +82,21 @@ async function dice_app()
   else
   {
 
-    console.log(positions);
+    // console.log(positions);
     console.log(widgets);
 
-    for (let j = 0; j < positions.length; j++) // update every sticker
-    {
-      let color = get_random_color();
-      update_widget(widgets[j], positions[j], color);
-      await sleep(200);
-    }
+    // for (let j = 0; j < widgets.length; j++) // update every sticker
+    // {
+    //   let color = get_random_color();
+    //   update_widget(widgets[j], positions[j], color);
+    //   await sleep(200);
+    // }
 
-    for (let i = 0; i < positions.length; i++) // update every sticker for final result
-    {
-      update_widget(widgets[i], positions[i], '#5ee335');
-      await sleep(200);
-    }
+    // for (let i = 0; i < widgets.length; i++) // update every sticker for final result
+    // {
+    //   update_widget(widgets[i], positions[i], '#5ee335');
+    //   await sleep(200);
+    // }
 
     // if(positions.length < 1)
     // {
@@ -132,7 +130,7 @@ miro.onReady(() => {
     miro.initialize({
       extensionPoints: {
         toolbar: {
-          title: 'Dice TEST 4',
+          title: 'Dice TEST 5',
           toolbarSvgIcon: icon24,
           librarySvgIcon: icon48,
           onClick: async () => {
