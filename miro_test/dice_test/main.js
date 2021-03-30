@@ -19,17 +19,16 @@ function sleep(ms) {
 
 async function update_widget(widget, color)
 {
-  // await miro.board.widgets.update({ 
-  //     id: widget.id, 
-  //     text: get_randome().toString(), 
-  //     // x: widget.x,
-  //     // y: widget.y,
-  //     style:{
-  //       stickerBackgroundColor: color,
-  //       backgroundOpacity: 1,
-  //     }
-  //   }); // update sticker
-  widget.text = get_randome().toString();
+  await miro.board.widgets.update({ 
+      id: widget.id, 
+      text: get_randome().toString(), 
+      x: widget.x,
+      y: widget.y,
+      style:{
+        stickerBackgroundColor: color,
+        backgroundOpacity: 1,
+      }
+    }); // update sticker
 }
 
 var dice_widgets = [];
@@ -42,21 +41,29 @@ async function dice_app()
   {
     for (let i = 0; i < positions.length; i++) // create a new sticker for every selected widget 
     {
-      let dice = (await miro.board.widgets.create({ 
-          type:'sticker', 
-          text: get_randome().toString(),
-          x: positions[i].x,
-          y: positions[i].y,
-          capabilities: {
-          "editable": false
-          },
-          style:{
-            backgroundOpacity: 1,
-          },
-        }))[0];
-        
-        dice_widgets.push(dice);
-        await sleep(200);
+      if(positions[i].type != 'sticker')
+      {
+        let dice = (await miro.board.widgets.create({ 
+            type:'sticker', 
+            text: get_randome().toString(),
+            x: positions[i].x,
+            y: positions[i].y,
+            capabilities: {
+            "editable": false
+            },
+            style:{
+              backgroundOpacity: 1,
+            },
+          }))[0];
+          
+          dice_widgets.push(dice);
+          await miro.board.widgets.deleteById(positions[i].id);
+          await sleep(200);
+      }
+      else
+      {
+        dice_widgets.push(positions[i]);
+      }
     }
       
     for (let j = 0; j < dice_widgets.length; j++) // update every sticker
@@ -71,42 +78,17 @@ async function dice_app()
       update_widget(dice_widgets[i], '#5ee335');
       await sleep(200);
     }
-    
-    // await sleep(5000);
-
-    // for (let i = 0; i < positions.length; i++) // remove stickers again
-    // {
-    //   await miro.board.widgets.deleteById(widgets[i]) // delete sticker
-    //   await sleep(200);
-    // }
   }
   else
   {
-
-    // console.log(positions);
-    console.log(dice_widgets);
-
-    for (let j = 0; j < dice_widgets.length; j++) // update every sticker
+    if(positions.length < 1)
     {
-      let color = get_random_color();
-      update_widget(dice_widgets[j], color);
-      await sleep(200);
+      miro.showNotification('Please select at least one existing widget.')
     }
-
-    for (let i = 0; i < dice_widgets.length; i++) // update every sticker for final result
+    if(positions.length > 5)
     {
-      update_widget(dice_widgets[i], '#5ee335');
-      await sleep(200);
+      miro.showNotification('You are selecting to many widgets, please pick 5 or less.')
     }
-
-    // if(positions.length < 1)
-    // {
-    //   miro.showNotification('Please select at least one existing widget.')
-    // }
-    // if(positions.length > 5)
-    // {
-    //   miro.showNotification('You are selecting to many widgets, please pick 5 or less.')
-    // }
   }
 }
 
@@ -131,7 +113,7 @@ miro.onReady(() => {
     miro.initialize({
       extensionPoints: {
         toolbar: {
-          title: 'Dice TEST 5',
+          title: 'Dice TEST 6',
           toolbarSvgIcon: icon24,
           librarySvgIcon: icon48,
           onClick: async () => {
