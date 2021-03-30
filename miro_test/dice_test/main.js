@@ -31,11 +31,10 @@ async function update_widget(widget, color)
     }); // update sticker
 }
 
-var dice_widgets = [];
-
 async function dice_app()
 {
   let positions = await miro.board.selection.get();
+  let dice_widgets = [];
 
   if (positions.length >= 1 && positions.length <= 5) // check if at least one and max. 5 widgets are selected
   {
@@ -113,7 +112,7 @@ miro.onReady(() => {
     miro.initialize({
       extensionPoints: {
         toolbar: {
-          title: 'Dice TEST 6',
+          title: 'Dice TEST 0',
           toolbarSvgIcon: icon24,
           librarySvgIcon: icon48,
           onClick: async () => {
