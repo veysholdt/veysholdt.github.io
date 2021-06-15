@@ -121,20 +121,12 @@ miro.onReady(() => {
             
             const auth = await miro.isAuthorized();
 
-            if (auth) // if user is authorized
-            {
+            if (!auth) {
+              // Ask the user to authorize the app.
+              await miro.requestAuthorization()
+            }
+
               dice_app();
-            }
-            else // if user is not authorized
-            {
-              miro.authorize({
-                response_type: 'token',
-                redirect_uri: 'https://veysholdt.github.io/miro/dice/authorized.html'
-                }).then(() => {
-                  dice_app(); // run the app once again
-              });
-            
-            }
           }
         }
       }
