@@ -22,18 +22,12 @@ async function init() {
                 diceList.push(dc);
             }
 
-            // roll the dice 3 times
-            for (let i = 0; i < 3; i++) {
+            // roll the dice 4 times
+            for (let i = 0; i < 4; i++) {
                 for (const dc of diceList) {
                     await dc.roll();
                     await sleep(400);
                 }
-            }
-
-            // finish rolling
-            for (const dc of diceList) {
-                await dc.fininsh();
-                await sleep(400);
             }
         }
         else {

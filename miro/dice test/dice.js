@@ -1,8 +1,6 @@
 
 const { board } = window.miro;
 
-const colors = ["gray","light_yellow","yellow","orange","light_green","green","dark_green","cyan","light_pink","pink","violet","red","light_blue","blue","dark_blue","black"];
-
 class dice
 {
     constructor(widget) {
@@ -10,13 +8,13 @@ class dice
     }
 
     async init() {
-        if (this.#widget.type != 'sticky_note') {
-            this.#widget = await board.createStickyNote({
-                content: this.#getDiceVal().toString(),
+        if (this.#widget.type != 'text') {
+            this.#widget = await board.createText({
+                content: this.#diceSides[Math.floor(Math.random() * 6)],
                 x: this.#widget.x,
                 y: this.#widget.y,
                 style: {
-                    fillColor: colors[Math.floor(Math.random() * 15)]
+                    fontSize: 250,
                 }
             });
         }
@@ -26,20 +24,21 @@ class dice
     }
 
     async roll() {
-        this.#widget.style.fillColor = colors[Math.floor(Math.random() * 15)];
-        this.#widget.content = this.#getDiceVal().toString();
-        await this.#widget.sync();
-    }
+        let side = this.#diceSides[Math.floor(Math.random() * 6)];
 
-    async fininsh() {
-        this.#widget.style.fillColor = "green";
-        this.#widget.content = this.#getDiceVal().toString();
+        // roll again if value is the same
+        if (side != this.#lastSide) {
+            this.#widget.content = side;
+        }
+        else {
+            this.roll();
+        }
+        
+        this.#lastSide = side;
         await this.#widget.sync();
-    }
-
-    #getDiceVal() {
-        return Math.floor(Math.random() * 6) + 1;   // random integer from 1 to 6 
     }
 
     #widget;
+    #diceSides = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
+    #lastSide = "";
 }
