@@ -1,6 +1,6 @@
 
-# Miro Dice
+# Miro Dice Test
 
-Select 1 to 5 widgets and click the dice symbol in your toolbar. Dice will be rolled at the same location as the selected widgets. If you want to roll the dice again, you just have to reselect the previously spawned dice and click the dice symbol again.
+This app is for testing purposes only. You can find the stable version of my Miro dice app here: https://github.com/veysholdt/veysholdt.github.io/tree/master/miro/dice
 
 <sup>Icons by svgrepo.com</sup>

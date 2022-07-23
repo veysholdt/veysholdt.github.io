@@ -3,28 +3,24 @@ const { board } = window.miro;
 
 class dice
 {
-    constructor(widget) {
-        this.#widget = widget;
+    async create(x, y) {
+        this.#widget = await board.createText({
+            content: dice.sides[Math.floor(Math.random() * 6)],
+            x: x,
+            y: y,
+            style: {
+                fontSize: 250,
+                textAlign: 'center',
+            }
+        });
     }
 
-    async init() {
-        if (this.#widget.type != 'text') {
-            this.#widget = await board.createText({
-                content: this.#diceSides[Math.floor(Math.random() * 6)],
-                x: this.#widget.x,
-                y: this.#widget.y,
-                style: {
-                    fontSize: 250,
-                }
-            });
-        }
-        else {
-            this.roll();
-        }
+    async remove() {
+        await board.remove(this.#widget);
     }
 
     async roll() {
-        let side = this.#diceSides[Math.floor(Math.random() * 6)];
+        let side = dice.sides[Math.floor(Math.random() * 6)];
 
         // roll again if value is the same
         if (side != this.#lastSide) {
@@ -39,6 +35,6 @@ class dice
     }
 
     #widget;
-    #diceSides = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
+    static sides = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
     #lastSide = "";
 }

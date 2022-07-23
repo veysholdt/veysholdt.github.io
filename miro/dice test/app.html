@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://unpkg.com/mirotone@2.0.0/dist/styles.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Loads the Miro Web SDK -->
+    <script src="https://miro.com/app/static/sdk/v2/miro.js"></script>
+    <!-- Loads the companion JS file with the logic -->
+    <script src="dice.js"></script>
+</head>
+
+<body>
+    <!-- The 'miro-draggable' class makes HTML items draggable -->
+    <div class="grid">
+        <div class="cs7 ce9 drag-me noselect">
+            <div class="icon icon-undo drag-me-arrow"></div>
+            <label class="label label-info drag-me-label" style="text-align: center;">Drag me</label>
+        </div>
+    </div>
+    <div class="miro-draggable noselect" id="draggable-dice"></div>
+
+    <div class="grid">
+        <div class="cs2 ce6">
+            <label for="dice-num">Number of dice</label>
+        </div>
+        <div class="cs7 ce11">
+            <input type="range" class="slider" id="dice-num-slider" name="dice-num" min="1" max="5">
+        </div>
+    </div>
+
+    <div style="height: 1em; width: 100%;"></div>
+
+    <div class="grid">
+        <button class="button button-primary cs2 ce11" id="remove-dice-button" onclick="removeDice()" type="button"
+            disabled>
+            Remove Dice
+        </button>
+    </div>
+
+    <hr />
+
+    <div class="grid">
+        <div class="cs2 ce11">
+            <p class="app-intro p-medium">
+                Roll the dice on your Miro board.
+            </p>
+            <div style="height: .5em; width: 100%;"></div>
+            <p class="app-intro p-medium">
+                Select the number of dice you want to roll and just drag them on your board.
+                The values of the dice will change 4 times until they stop rolling.
+            </p>
+            <div style="height: .5em; width: 100%;"></div>
+            <p class="app-intro p-medium">
+                The dice can only be removed by this app while the app is opened. 
+                After closing the app, you have to remove them manually.
+            </p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
