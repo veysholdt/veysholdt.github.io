@@ -1,5 +1,8 @@
 
 # Miro Dice
 
-Select 1 to 5 already existing widgets and click on the dice symbol in the bottom-toolbar. On every selected widget a new sticker appears
-showing a random generated number from 1 to 6. The stickers disappear after 5 seconds.
+Roll the dice on your Miro board.
+
+Select the number of dice you want to roll and just drag them on your board. The values of the dice will change 4 times until they stop rolling.
+
+The dice can only be removed by this app while the app is opened. After closing the app, you have to remove them manually.
