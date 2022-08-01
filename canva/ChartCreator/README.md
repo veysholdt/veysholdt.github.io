@@ -17,6 +17,16 @@ The structure is shown below:
 <img height="200" src="./assets/example-pie-chart.png">
 </div>
 
+<br/>
+
+>**Note**
+>Please make sure that the number of rows multiplied by the number of coloumns in your table does not exceed 200.
+>In this example the number would be 12 * 3 = 36.
+
+>**Note**
+>If you do not want to have labels on the x-axis just insert a blank space instead.
+>E.g. replacing Jan, Feb, Mrz etc. with spaces.
+
 <br clear="both"/>
 
 ---
