@@ -29,6 +29,47 @@
         <div class="cs7 ce11">
             <input type="range" class="slider" id="dice-num-slider" name="dice-num" min="1" max="5">
         </div>
+        <div class="cs2 ce6">
+            <label class="radiobutton">
+                <input type="radio" name="number-of-sides-radio" class="sides-num-radio" value="4" onclick="changeSidesEvent(this);">
+                <span>4 Sides</span>
+            </label>
+            <label class="radiobutton">
+                <input type="radio" name="number-of-sides-radio" class="sides-num-radio" value="6" id="default-sides" onclick="changeSidesEvent(this);">
+                <span>6 Sides</span>
+            </label>
+            <label class="radiobutton">
+                <input type="radio" name="number-of-sides-radio" class="sides-num-radio" value="8" onclick="changeSidesEvent(this);">
+                <span>8 Sides</span>
+            </label>
+            <label class="radiobutton">
+                <input type="radio" name="number-of-sides-radio" class="sides-num-radio" value="10" onclick="changeSidesEvent(this);">
+                <span>10 Sides</span>
+            </label>
+        </div>
+        <div class="cs7 ce11">
+            <label class="radiobutton">
+                <input type="radio" name="number-of-sides-radio" class="sides-num-radio" value="12" onclick="changeSidesEvent(this);">
+                <span>12 Sides</span>
+            </label>
+            <label class="radiobutton">
+                <input type="radio" name="number-of-sides-radio" class="sides-num-radio" value="20" onclick="changeSidesEvent(this);">
+                <span>20 Sides</span>
+            </label>
+            <label class="radiobutton">
+                <input type="radio" name="number-of-sides-radio" class="sides-num-radio" value="30" onclick="changeSidesEvent(this);">
+                <span>30 Sides</span>
+            </label>
+            <label class="radiobutton">
+                <input type="radio" name="number-of-sides-radio" class="sides-num-radio" value="custom" onclick="changeSidesEvent(this);">
+                <span>Custom</span>
+            </label>
+        </div>
+        <div class="cs2 ce6">
+        </div>
+        <div class="cs7 ce11">
+            <input class="input" type="number" min="4" max="99" name="number-of-sides" id="number-of-sides-input" placeholder="# of sides"/>
+        </div>
     </div>
 
     <div style="height: 1em; width: 100%;"></div>

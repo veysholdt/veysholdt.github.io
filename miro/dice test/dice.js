@@ -9,9 +9,25 @@ class dice
             x: x,
             y: y,
             style: {
-                fontSize: 250,
+                fontSize: 230,
                 textAlign: 'center',
-            }
+            },
+            width: 100,
+        });
+    }
+
+    async createCustom(x, y, sides) {
+        this.#widget = await board.createShape({
+            content: Math.floor(Math.random() * (sides - 1) + 1).toString(),
+            shape: 'rectangle',
+            x: x,
+            y: y,
+            style: {
+                fontSize: 45,
+                textAlign: 'center',
+            },
+            width: 100,
+            height: 100,
         });
     }
 
@@ -30,6 +46,23 @@ class dice
             this.roll();
         }
         
+        this.#lastSide = side;
+        await this.#widget.sync();
+    }
+
+    async rollCustom(sides) {
+        let side = Math.floor(Math.random() * (sides - 1) + 1).toString();
+        let i = 0;
+
+        // roll again if value is the same
+        if (side != this.#lastSide || i < 10) {
+            this.#widget.content = side;
+        }
+        else {
+            i++;
+            this.rollCustom(sides);
+        }
+
         this.#lastSide = side;
         await this.#widget.sync();
     }

@@ -1,5 +1,5 @@
 
-// app URL: https://veysholdt.github.io/miro/dice%20test/
+// app URL: https://veysholdt.github.io/miro/dice
 
 async function init() {
 
