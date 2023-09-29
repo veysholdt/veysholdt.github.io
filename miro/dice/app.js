@@ -94,6 +94,7 @@ async function init() {
     // Enable the 'drop' event on the app panel. Active on 'miro-draggable' HTML elements
     await miro.board.ui.on('drop', async ({ x, y, target }) => {
 
+        // disable buttons/inputs while dice are rolled
         radioButtons.forEach(element => {
             element.disabled = true;
         });
@@ -138,10 +139,11 @@ async function init() {
 
         removeDiceButton.disabled = false;
 
+        // enable buttons/inputs while dice are rolled
         radioButtons.forEach(element => {
             element.disabled = false;
         });
-        numberOfSidesInput.disabled = true;
+        numberOfSidesInput.disabled = false;
         
     });
 }

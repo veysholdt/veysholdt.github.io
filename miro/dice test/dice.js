@@ -18,7 +18,7 @@ class dice
 
     async createCustom(x, y, sides) {
         this.#widget = await board.createShape({
-            content: Math.floor(Math.random() * (sides - 1) + 1).toString(),
+            content: Math.floor(Math.random() * sides  + 1).toString(),
             shape: 'rectangle',
             x: x,
             y: y,
@@ -51,7 +51,7 @@ class dice
     }
 
     async rollCustom(sides) {
-        let side = Math.floor(Math.random() * (sides - 1) + 1).toString();
+        let side = Math.floor(Math.random() * sides + 1).toString();
         let i = 0;
 
         // roll again if value is the same
